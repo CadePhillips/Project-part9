@@ -1,0 +1,96 @@
+[
+    {
+        "image": "images/player-pics/kimball-pic.webp",
+        "name": "Roman Kimball",
+        "number": "2",
+        "postion": [
+            "Right Handed Pitcher"
+        ],
+        "year": "Redshirt Sophomore",
+        "hometown": "New Hartford, N.Y.",
+        "previousschool": "Notre Dame",
+        "height": "5-11",
+        "weight": "185",
+        "bats": "Right",
+        "throws": "Right"
+    },
+    {
+        "image": "images/player-pics/ellis-pic.webp",
+        "name": "Lee Ellis",
+        "number": "3",
+        "postion": [
+            "Middle Infield",
+            "Third Base"
+        ],
+        "year": "Freshman",
+        "hometown": "White Plains, M.D.",
+        "previousschool": "None",
+        "height": "5-11",
+        "weight": "170",
+        "bats": "Right",
+        "throws": "Right"
+    },
+    {
+        "image": "images/player-pics/phipps-pic.webp",
+        "name": "Jackson Phipps",
+        "number": "4",
+        "postion": [
+            "Left Handed Pitcher"
+        ],
+        "year": "Redshirt Junior",
+        "hometown": "Dallas, G.A.",
+        "previousschool": "None",
+        "height": "6-4",
+        "weight": "225",
+        "bats": "Left",
+        "throws": "Left"
+    },
+    {
+        "image": "images/player-pics/lecroy-pic.webp",
+        "name": "Talmadge Lecroy",
+        "number": "5",
+        "postion": [
+            "Third Base",
+            "Middle Infield",
+            "Catcher"
+        ],
+        "year": "Junior",
+        "hometown": "Belton, S.C.",
+        "previousschool": "None",
+        "height": "6-2",
+        "weight": "205",
+        "bats": "Right",
+        "throws": "Right"
+    },
+    {
+        "image": "images/player-pics/jackson-pic.webp",
+        "name": "Blake Jackon",
+        "number": "5",
+        "postion": [
+            "Outfield",
+            "First Base"
+        ],
+        "year": "Junior",
+        "hometown": "Coppel, T.X.",
+        "previousschool": "Charlotte",
+        "height": "6-0",
+        "weight": "195",
+        "bats": "Left",
+        "throws": "Left"
+    },
+    {
+        "image": "images/player-pics/jones-pic.webp",
+        "name": "Kennedy Jones",
+        "number": "7",
+        "postion": [
+            "Outfield"
+        ],
+        "year": "Junior",
+        "hometown": "Norfolk, V.A.",
+        "previousschool": "UNC Greensboro",
+        "height": "6-1",
+        "weight": "220",
+        "bats": "Right",
+        "throws": "Right"
+    }
+]
