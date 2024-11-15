@@ -29,8 +29,8 @@ let players = [
     "image": "images/player-pics/kimball-pic.webp",
     "name": "Roman Kimball",
     "number": "2",
-    "postion": [
-    "Right Handed Pitcher"
+    "position": [
+    "Right Handed Pitcher "
     ],
     "year": "Redshirt Sophomore",
     "hometown": "New Hartford, N.Y.",
@@ -44,9 +44,9 @@ let players = [
     "image": "images/player-pics/ellis-pic.webp",
     "name": "Lee Ellis",
     "number": "3",
-    "postion": [
-    "Middle Infield",
-    "Third Base"
+    "position": [
+    "Middle Infield ",
+    "Third Base "
     ],
     "year": "Freshman",
     "hometown": "White Plains, M.D.",
@@ -60,8 +60,8 @@ let players = [
     "image": "images/player-pics/phipps-pic.webp",
     "name": "Jackson Phipps",
     "number": "4",
-    "postion": [
-    "Left Handed Pitcher"
+    "position": [
+    "Left Handed Pitcher "
     ],
     "year": "Redshirt Junior",
     "hometown": "Dallas, G.A.",
@@ -75,9 +75,9 @@ let players = [
     "image": "images/player-pics/lecroy-pic.webp",
     "name": "Talmadge Lecroy",
     "number": "5",
-    "postion": [
-    "Third Base",
-    "Middle Infield",
+    "position": [
+    "Third Base ",
+    "Middle Infield ",
     "Catcher"
     ],
     "year": "Junior",
@@ -92,8 +92,8 @@ let players = [
     "image": "images/player-pics/jackson-pic.webp",
     "name": "Blake Jackon",
     "number": "6",
-    "postion": [
-    "Outfield",
+    "position": [
+    "Outfield ",
     "First Base"
     ],
     "year": "Junior",
@@ -108,8 +108,8 @@ let players = [
     "image": "images/player-pics/jones-pic.webp",
     "name": "Kennedy Jones",
     "number": "7",
-    "postion": [
-    "Outfield"
+    "position": [
+    "Outfield "
     ],
     "year": "Junior",
     "hometown": "Norfolk, V.A.",
