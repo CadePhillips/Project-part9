@@ -1,15 +1,14 @@
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
-//const Joi = require("joi");
-//const multer = require("multer");
+const Joi = require("joi");
+const multer = require("multer");
 app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(cors());
 
-/*const storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./public/images/");
   },
@@ -19,7 +18,7 @@ app.use(cors());
 });
 
 const upload = multer({ storage: storage });
-*/
+
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -127,23 +126,37 @@ app.get("/api/players", (req, res) => {
   res.send(players);
 });
 
-/*
+
 app.post("/api/players", upload.single("img"), (req, res) => {
+  console.log("Sending request");
+
   const result = validatePlayer(req.body);
 
   if (result.error) {
     res.status(400).send(result.error.details[0].message);
+    console.log("400 Error");
     return;
   }
 
+  const player = {
+      name: req.body.name,
+      number: req.body.number,
+      position: req.body.position,
+      year: req.body.year,
+    };
+
   if (req.file) {
-    player.main_image = "images/" + req.file.filename;
+    player.image = "images/" + req.file.filename;
+    console.log("Image request");
   }
 
+  console.log("Hello");
   players.push(player);
+  console.log(player);
   res.status(200).send(player);
 });
 
+/*
 app.put("/api/players/:id", upload.single("img"), (req, res) => {
   let player = players.find((h) => h._id === parseInt(req.params.id));
 
@@ -157,32 +170,37 @@ app.put("/api/players/:id", upload.single("img"), (req, res) => {
   }
 
   if (req.file) {
-    player.main_image = "images/" + req.file.filename;
+    player.image = "images/" + req.file.filename;
   }
-
   res.send(player);
 });
+*/
 
+/*
 app.delete("/api/players/:id", (req, res) => {
   const player = players.find((h) => h._id === parseInt(req.params.id));
 
   if (!player) {
-    res.status(404).send("The playerwas not found");
+    res.status(404).send("The player was not found");
   }
 
   const index = players.indexOf(player);
   players.splice(index, 1);
   res.send(player);
 });
+*/
 
 const validatePlayer = (player) => {
   const schema = Joi.object({
-    
+    name:Joi.string().required(),
+    number:Joi.number().required(),
+    position:Joi.string().required(),
+    year:Joi.string().required()
   });
-
   return schema.validate(player);
 };
-*/
+
+
 app.listen(3002, () => {
   console.log("I'm listening");
 });

@@ -10,6 +10,8 @@
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "multer": "^1.4.5-lts.1",
     "project-part8": "file:",
     "project-part9": "file:",
     "react": "^18.3.1",
