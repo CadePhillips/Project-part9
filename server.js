@@ -91,7 +91,7 @@ let players = [
     {
     "image": "images/player-pics/jackson-pic.webp",
     "name": "Blake Jackon",
-    "number": "5",
+    "number": "6",
     "postion": [
     "Outfield",
     "First Base"
