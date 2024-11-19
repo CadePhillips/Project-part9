@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 let players = [
     {
+    "_id": 1,
     "image": "images/player-pics/kimball-pic.webp",
     "name": "Roman Kimball",
     "number": "2",
@@ -41,6 +42,7 @@ let players = [
     "throws": "Right"
     },
     {
+    "_id": 2,
     "image": "images/player-pics/ellis-pic.webp",
     "name": "Lee Ellis",
     "number": "3",
@@ -57,6 +59,7 @@ let players = [
     "throws": "Right"
     },
     {
+    "_id": 3,
     "image": "images/player-pics/phipps-pic.webp",
     "name": "Jackson Phipps",
     "number": "4",
@@ -72,6 +75,7 @@ let players = [
     "throws": "Left"
     },
     {
+    "_id": 4,
     "image": "images/player-pics/lecroy-pic.webp",
     "name": "Talmadge Lecroy",
     "number": "5",
@@ -89,6 +93,7 @@ let players = [
     "throws": "Right"
     },
     {
+    "_id": 5,
     "image": "images/player-pics/jackson-pic.webp",
     "name": "Blake Jackon",
     "number": "6",
@@ -105,6 +110,7 @@ let players = [
     "throws": "Left"
     },
     {
+    "_id": 6,
     "image": "images/player-pics/jones-pic.webp",
     "name": "Kennedy Jones",
     "number": "7",
@@ -139,6 +145,7 @@ app.post("/api/players", upload.single("img"), (req, res) => {
   }
 
   const player = {
+      _id: players.length + 1,
       name: req.body.name,
       number: req.body.number,
       position: req.body.position,
@@ -156,7 +163,7 @@ app.post("/api/players", upload.single("img"), (req, res) => {
   res.status(200).send(player);
 });
 
-/*
+
 app.put("/api/players/:id", upload.single("img"), (req, res) => {
   let player = players.find((h) => h._id === parseInt(req.params.id));
 
@@ -174,9 +181,9 @@ app.put("/api/players/:id", upload.single("img"), (req, res) => {
   }
   res.send(player);
 });
-*/
 
-/*
+
+
 app.delete("/api/players/:id", (req, res) => {
   const player = players.find((h) => h._id === parseInt(req.params.id));
 
@@ -188,7 +195,7 @@ app.delete("/api/players/:id", (req, res) => {
   players.splice(index, 1);
   res.send(player);
 });
-*/
+
 
 const validatePlayer = (player) => {
   const schema = Joi.object({
