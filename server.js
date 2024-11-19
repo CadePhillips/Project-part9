@@ -157,7 +157,6 @@ app.post("/api/players", upload.single("img"), (req, res) => {
     console.log("Image request");
   }
 
-  console.log("Hello");
   players.push(player);
   console.log(player);
   res.status(200).send(player);
@@ -165,9 +164,12 @@ app.post("/api/players", upload.single("img"), (req, res) => {
 
 
 app.put("/api/players/:id", upload.single("img"), (req, res) => {
-  let player = players.find((h) => h._id === parseInt(req.params.id));
+  const player = players.find((p) => p._id === parseInt(req.params.id));
 
-  if (!player) res.status(400).send("Player not found");
+  if (!player){ 
+    res.status(400).send("Player was not found");
+    return;
+  }
 
   const result = validatePlayer(req.body);
 
@@ -176,24 +178,31 @@ app.put("/api/players/:id", upload.single("img"), (req, res) => {
     return;
   }
 
+  player.name = req.body.name;
+  player.number = req.body.number;
+  player.position = req.body.position;
+  player.year = req.body.year;
+
   if (req.file) {
     player.image = "images/" + req.file.filename;
   }
-  res.send(player);
+  
+  res.status(200).send(player);
 });
 
 
 
 app.delete("/api/players/:id", (req, res) => {
-  const player = players.find((h) => h._id === parseInt(req.params.id));
+  const player = players.find((player) => player._id === parseInt(req.params.id));
 
   if (!player) {
-    res.status(404).send("The player was not found");
+    res.status(404).send("Player was not found");
+    return;
   }
 
   const index = players.indexOf(player);
   players.splice(index, 1);
-  res.send(player);
+  res.status(200).send(player);
 });
 
 
