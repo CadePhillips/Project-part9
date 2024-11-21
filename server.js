@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 
 let players = [
     {
-    "_id": 1,
+    _id: 1,
     "image": "images/player-pics/kimball-pic.webp",
     "name": "Roman Kimball",
     "number": "2",
@@ -42,7 +42,7 @@ let players = [
     "throws": "Right"
     },
     {
-    "_id": 2,
+    _id: 2,
     "image": "images/player-pics/ellis-pic.webp",
     "name": "Lee Ellis",
     "number": "3",
@@ -59,7 +59,7 @@ let players = [
     "throws": "Right"
     },
     {
-    "_id": 3,
+    _id: 3,
     "image": "images/player-pics/phipps-pic.webp",
     "name": "Jackson Phipps",
     "number": "4",
@@ -75,7 +75,7 @@ let players = [
     "throws": "Left"
     },
     {
-    "_id": 4,
+    _id: 4,
     "image": "images/player-pics/lecroy-pic.webp",
     "name": "Talmadge Lecroy",
     "number": "5",
@@ -93,7 +93,7 @@ let players = [
     "throws": "Right"
     },
     {
-    "_id": 5,
+    _id: 5,
     "image": "images/player-pics/jackson-pic.webp",
     "name": "Blake Jackon",
     "number": "6",
@@ -110,7 +110,7 @@ let players = [
     "throws": "Left"
     },
     {
-    "_id": 6,
+    _id: 6,
     "image": "images/player-pics/jones-pic.webp",
     "name": "Kennedy Jones",
     "number": "7",
@@ -165,7 +165,8 @@ app.post("/api/players", upload.single("img"), (req, res) => {
 
 app.put("/api/players/:id", upload.single("img"), (req, res) => {
   const player = players.find((p) => p._id === parseInt(req.params.id));
-
+  console.log(req.params.id);
+  
   if (!player){ 
     res.status(400).send("Player was not found");
     return;
@@ -194,14 +195,22 @@ app.put("/api/players/:id", upload.single("img"), (req, res) => {
 
 app.delete("/api/players/:id", (req, res) => {
   const player = players.find((player) => player._id === parseInt(req.params.id));
+  console.log("hello");
+
+  for(let i in players){
+    console.log(players[i]);
+  }
 
   if (!player) {
     res.status(404).send("Player was not found");
+    console.log("404 error");
     return;
   }
 
+  console.log("test");
+
   const index = players.indexOf(player);
-  players.splice(index, 1);
+  players.splice(index,1);
   res.status(200).send(player);
 });
 
