@@ -7,10 +7,11 @@ app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(cors());
+const mongoose = require("mongoose");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./public/images/");
+    cb(null, "./public/images/player-pics/");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -19,10 +20,32 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+mongoose
+  .connect (
+    "mongodb+srv://2r8vUHIZwsjLwFYu:2r8vUHIZwsjLwFYu@uscbaseballtracker.lwvuo.mongodb.net/?retryWrites=true&w=majority&appName=USCBaseballTracker"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.log("Could not connect to MongoDB", error);
+  });
+
+  const playerSchema = new mongoose.Schema({
+    name: String,
+    number: Number,
+    position: String,
+    year: String,
+    image: String,
+  });
+
+  const Player = mongoose.model("Player", playerSchema);
+
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
+
 
 /*
 let players = [
@@ -130,12 +153,18 @@ let players = [
 */
 
 
-app.get("/api/players", (req, res) => {
+app.get("/api/players", async(req, res) => {
+  const players = await Player.find();
   res.send(players);
 });
 
+app.get("/api/players", async(req,res) => {
+  const player = await Player.findOne({ _id: id });
+  res.send(player);
+});
 
-app.post("/api/players", upload.single("img"), (req, res) => {
+
+app.post("/api/players", upload.single("img"), async(req, res) => {
   console.log("Sending request");
 
   const result = validatePlayer(req.body);
@@ -146,34 +175,25 @@ app.post("/api/players", upload.single("img"), (req, res) => {
     return;
   }
 
-  const player = {
-      _id: players.length + 1,
+  const player = new Player({
       name: req.body.name,
       number: req.body.number,
       position: req.body.position,
       year: req.body.year,
-    };
+    });
 
   if (req.file) {
     player.image = "images/" + req.file.filename;
     console.log("Image request");
   }
 
-  players.push(player);
-  console.log(player);
-  res.status(200).send(player);
+  const newPlayer = await player.save();
+  console.log(newPlayer);
+  res.send(newPlayer);
 });
 
 
-app.put("/api/players/:id", upload.single("img"), (req, res) => {
-  const player = players.find((p) => p._id === parseInt(req.params.id));
-  console.log(req.params.id);
-  
-  if (!player){ 
-    res.status(400).send("Player was not found");
-    return;
-  }
-
+app.put("/api/players/:id", upload.single("img"), async(req, res) => {
   const result = validatePlayer(req.body);
 
   if (result.error) {
@@ -181,39 +201,33 @@ app.put("/api/players/:id", upload.single("img"), (req, res) => {
     return;
   }
 
-  player.name = req.body.name;
-  player.number = req.body.number;
-  player.position = req.body.position;
-  player.year = req.body.year;
+  let fieldsToUpdate = {
+    name: req.body.name,
+    number: req.body.number,
+    position: req.body.position,
+    year: req.body.year,
+  };
+
+  
 
   if (req.file) {
-    player.image = "images/" + req.file.filename;
+    fieldsToUpdate.image = "images/" + req.file.filename;
   }
-  
-  res.status(200).send(player);
+
+  const wentThrough = await Player.updateOne (
+    { _id: req.params.id },
+    fieldsToUpdate
+  );
+
+  const updatedPlayer = await Player.findOne({ _id: req.params.id });
+  res.send(updatedPlayer);
 });
 
 
 
-app.delete("/api/players/:id", (req, res) => {
-  const player = players.find((player) => player._id === parseInt(req.params.id));
-  console.log("hello");
-
-  for(let i in players){
-    console.log(players[i]);
-  }
-
-  if (!player) {
-    res.status(404).send("Player was not found");
-    console.log("404 error");
-    return;
-  }
-
-  console.log("test");
-
-  const index = players.indexOf(player);
-  players.splice(index,1);
-  res.status(200).send(player);
+app.delete("/api/players/:id", async(req, res) => {
+  const player = await Player.findByIdAndDelete(req.params.id);
+  res.send(player);
 });
 
 
