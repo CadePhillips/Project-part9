@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+/*
 let players = [
     {
     _id: 1,
@@ -126,6 +127,7 @@ let players = [
     "throws": "Right"
     }
     ];
+*/
 
 
 app.get("/api/players", (req, res) => {
