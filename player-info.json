@@ -100,12 +100,27 @@
         "position": [
             "Outfield "
         ],
-        "year": "",
-        "hometown": "Norfolk, V.A.",
-        "previousschool": "UNC Greensboro",
-        "height": "6-1",
-        "weight": "220",
+        "year": "Senior",
+        "hometown": "Eagle, Idaho",
+        "previousschool": "St. Mary's",
+        "height": "5-10",
+        "weight": "195",
         "bats": "Right",
         "throws": "Right"
+    },
+    {
+        "image": "images/player-pics/evans-pic.webp",
+        "name": "Jarvis Evans",
+        "number": "4",
+        "position": [
+            "Left Handed Pitcher "
+        ],
+        "year": "Junior",
+        "hometown": "Buford, Georgia",
+        "previousschool": "Georgia",
+        "height": "6-4",
+        "weight": "216",
+        "bats": "Left",
+        "throws": "Left"
     }
 ]
