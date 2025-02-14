@@ -92,5 +92,20 @@
         "weight": "220",
         "bats": "Right",
         "throws": "Right"
+    },
+    {
+        "image": "images/player-pics/mashmore.webp",
+        "name": "Dalton Mashmore",
+        "number": "3",
+        "position": [
+            "Outfield "
+        ],
+        "year": "",
+        "hometown": "Norfolk, V.A.",
+        "previousschool": "UNC Greensboro",
+        "height": "6-1",
+        "weight": "220",
+        "bats": "Right",
+        "throws": "Right"
     }
 ]
