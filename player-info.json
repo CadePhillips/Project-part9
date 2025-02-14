@@ -122,5 +122,20 @@
         "weight": "216",
         "bats": "Left",
         "throws": "Left"
+    },
+    {
+        "image": "images/player-pics/kaczmar-pic.webp",
+        "name": "Henry Kaczmar",
+        "number": "7",
+        "position": [
+            "Middle Infield "
+        ],
+        "year": "Junior",
+        "hometown": "Bath, Ohio",
+        "previousschool": "Ohio State",
+        "height": "5-10",
+        "weight": "185",
+        "bats": "Left",
+        "throws": "Right"
     }
 ]
